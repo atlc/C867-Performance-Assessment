@@ -1,14 +1,15 @@
 #include "student.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
-Student::Student(string id, string first, string last, string email, int ageYears, vector<int> daysForCourses, DegreeProgram prog) {
+Student::Student(string id, string first, string last, string email, int ageYears, int daysCourse1, int daysCourse2, int daysCourse3, DegreeProgram prog) {
 	SetStudentID(id);
 	SetFirstName(first);
 	SetLastName(last);
 	SetEmail(email);
 	SetAge(ageYears);
-	SetDaysInCourses(daysForCourses);
+	SetDaysInCourses(daysCourse1, daysCourse2, daysCourse3);
 	SetDegreeProgram(prog);
 }
 
@@ -48,12 +49,14 @@ void Student::SetAge(int years) {
 	age = years;
 }
 
-int Student::GetAge() {
+int Student::GetAge() const {
 	return age;
 }
 
-void Student::SetDaysInCourses(vector<int> &days) {
-	daysInCourses = days;
+void Student::SetDaysInCourses(int daysCourse1, int daysCourse2, int daysCourse3) {
+	daysInCourses.at(0) = daysCourse1;
+	daysInCourses.at(1) = daysCourse2;
+	daysInCourses.at(2) = daysCourse3;
 }
 
 vector<int> Student::GetDaysInCourses() {
@@ -64,11 +67,12 @@ void Student::SetDegreeProgram(DegreeProgram prog) {
 	program = prog;
 }
 
-DegreeProgram Student::GetDegreeProgram() {
+DegreeProgram Student::GetDegreeProgram() const {
 	return program;
 }
 
-void Student::Print() {
+void Student::Print() const {
+	cout << "     HERE       " << endl;
 	string identification = " (id: " + studentID + "; email: " + email + ") ";
 	string demographics = firstName + " " + lastName + ", " + to_string(age) + identification;
 	string daysInfo = to_string(daysInCourses.at(0)) + ", " + to_string(daysInCourses.at(1)) + ", and" + to_string(daysInCourses.at(2)) + " days, respectively.";

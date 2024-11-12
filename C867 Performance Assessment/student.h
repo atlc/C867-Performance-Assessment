@@ -1,44 +1,45 @@
 #ifndef STUDENT_H
 #define STUDENT_H
-#pragma once
-#include <vector>
+
 #include "degree.h"
+#include <vector>
+#include <string>
 using namespace std;
 
 class Student {
 public:
-	Student(string id, string first, string last, string email, int age, vector<int> days, DegreeProgram program);
+	Student(std::string id, std::string first, std::string last, std::string email, int age, int daysCourse1, int daysCourse2, int daysCourse3, DegreeProgram program);
 
-	string GetStudentID();
-	void SetStudentID(string id);
+	std::string GetStudentID();
+	void SetStudentID(std::string id);
 
-	string GetFirstName();
-	void SetFirstName(string first);
+	std::string GetFirstName();
+	void SetFirstName(std::string first);
 
-	string GetLastName();
-	void SetLastName(string last);
+	std::string GetLastName();
+	void SetLastName(std::string last);
 
-	string GetEmail();
-	void SetEmail(string email);
+	std::string GetEmail();
+	void SetEmail(std::string email);
 
-	int GetAge();
+	int GetAge() const;
 	void SetAge(int age);
 
 	vector<int> GetDaysInCourses();
-	void SetDaysInCourses(vector<int> &days);
+	void SetDaysInCourses(int daysCourse1, int daysCourse2, int daysCourse3);
 
-	DegreeProgram GetDegreeProgram();
+	DegreeProgram GetDegreeProgram() const;
 	void SetDegreeProgram(DegreeProgram program);
 
-	void Print();
+	void Print() const;
 
 private:
-	string studentID;
-	string firstName;
-	string lastName;
-	string email;
+	std::string studentID;
+	std::string firstName;
+	std::string lastName;
+	std::string email;
 	int age;
-	vector<int> &daysInCourses;
+	vector<int> daysInCourses;
 	DegreeProgram program;
 };
 
