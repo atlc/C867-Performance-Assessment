@@ -57,7 +57,7 @@ void Student::SetDaysInCourses(vector<int> &days) {
 }
 
 vector<int> Student::GetDaysInCourses() {
-	return daysInCourses[3];
+	return daysInCourses;
 }
 
 void Student::SetDegreeProgram(DegreeProgram prog) {
@@ -71,7 +71,7 @@ DegreeProgram Student::GetDegreeProgram() {
 void Student::Print() {
 	string identification = " (id: " + studentID + "; email: " + email + ") ";
 	string demographics = firstName + " " + lastName + ", " + to_string(age) + identification;
-	string daysInfo = to_string(daysInCourses->at(0)) + ", " + to_string(daysInCourses->at(1)) + ", and" + to_string(daysInCourses->at(2)) + " days, respectively.";
+	string daysInfo = to_string(daysInCourses.at(0)) + ", " + to_string(daysInCourses.at(1)) + ", and" + to_string(daysInCourses.at(2)) + " days, respectively.";
 	string courseInfo = "' student, and is expected to complete their courses in " + daysInfo;
 	string degreeInfo = "is enrolled as a '" + tolower(program) + courseInfo;
 	cout << "Student " << demographics << degreeInfo << endl;
