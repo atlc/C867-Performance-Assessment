@@ -4,41 +4,42 @@
 #include <string>
 #include <vector>
 #include "degree.h"
+using namespace std;
 
 class Student {
 	public:
-		Student();
+		Student(string id, string first, string last, string email, int age, vector<int> days, DegreeProgram program);
 
-		std::string GetStudentID();
-		void SetStudentID(std::string id);
+		string GetStudentID();
+		void SetStudentID(string id);
 
-		std::string GetFirstName();
-		void SetFirstName(std::string first);
+		string GetFirstName();
+		void SetFirstName(string first);
 
-		std::string GetLastName();
-		void SetLastName(std::string last);
+		string GetLastName();
+		void SetLastName(string last);
 
-		std::string GetEmail();
-		void SetEmail(std::string email);
+		string GetEmail();
+		void SetEmail(string email);
 
 		int GetAge();
 		void SetAge(int age);
 
-		int GetDaysInCourses();
-		void SetDaysInCourses(std::vector<int> days);
+		vector<int> GetDaysInCourses();
+		void SetDaysInCourses(vector<int> &days);
 
 		DegreeProgram GetDegreeProgram();
 		void SetDegreeProgram(DegreeProgram program);
 
-		void print();
+		void Print();
 
 	private:
-		std::string studentID;
-		std::string firstName;
-		std::string lastName;
-		std::string email;
+		string studentID;
+		string firstName;
+		string lastName;
+		string email;
 		int age;
-		std::vector<int> daysInCourses[3];
+		vector<int> &daysInCourses;
 		DegreeProgram program;
 };
 
