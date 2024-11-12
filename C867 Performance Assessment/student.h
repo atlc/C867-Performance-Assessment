@@ -25,7 +25,7 @@ public:
 	int GetAge() const;
 	void SetAge(int age);
 
-	vector<int> GetDaysInCourses();
+	int* GetDaysInCourses();
 	void SetDaysInCourses(int daysCourse1, int daysCourse2, int daysCourse3);
 
 	DegreeProgram GetDegreeProgram() const;
@@ -39,7 +39,7 @@ private:
 	std::string lastName;
 	std::string email;
 	int age;
-	vector<int> daysInCourses;
+	int daysInCourses[3];
 	DegreeProgram program;
 };
 

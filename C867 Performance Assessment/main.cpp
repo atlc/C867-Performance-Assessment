@@ -1,6 +1,3 @@
-// C867 Performance Assessment.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include "roster.h"
 #include <sstream>
@@ -31,9 +28,8 @@ int main()
         "A5,Andrew,Cartwright,aca1820@wgu.edu,32,30,35,30,SOFTWARE"
     };
 
-    //Roster roster = Roster();
+    Roster roster = Roster();
 
-    // Instead of manually adding each student, I wanted to practice a more dynamic approach
     for (int i = 0; i < studentData->size(); i++) {
         cout << "Parser loop " << i << endl;
         string parsed[9];
@@ -55,6 +51,6 @@ int main()
         else if (programString == "SECURITY") { program = SECURITY; }
         else { program = NETWORK; }
 
-        //roster.add(id, first, last, email, age, class1, class2, class3, program);
+        roster.add(id, first, last, email, age, class1, class2, class3, program);
     }
 }

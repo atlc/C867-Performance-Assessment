@@ -10,11 +10,11 @@ public:
 	Roster();
 
 	void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram);
-	void remove(string studentID);
+	//void remove(string studentID);
 	//void printAll();
 
 private:
-	Student* classRosterArray;
+	Student* classRosterArray[5];
 };
 
 #endif
