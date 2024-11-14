@@ -1,5 +1,4 @@
 #include <iostream>
-#include "roster.h"
 #include <sstream>
 using namespace std;
 
@@ -18,39 +17,15 @@ static string* separateCSV(string str, string tokens[9]) {
     return tokens;
 }
 
+string studentData[] = { 
+    "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+    "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+    "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+    "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+    "A5,Andrew,Cartwright,aca1820@wgu.edu,32,30,35,30,SOFTWARE"
+};
+
 int main()
 {   
-    string studentData[] = { 
-        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
-        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
-        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-        "A5,Andrew,Cartwright,aca1820@wgu.edu,32,30,35,30,SOFTWARE"
-    };
 
-    Roster roster = Roster();
-
-    for (int i = 0; i < studentData->size(); i++) {
-        cout << "Parser loop " << i << endl;
-        string parsed[9];
-        separateCSV(studentData[i], parsed);
-        
-        string id = parsed[0];
-        string first = parsed[1];
-        string last = parsed[2];
-        string email = parsed[3];
-        int age = stoi(parsed[4]);
-        int class1 =  stoi(parsed[5]);
-        int class2 = stoi(parsed[6]);
-        int class3 = stoi(parsed[7]);
-        string programString  = parsed[8];
-
-        DegreeProgram program;
-
-        if (programString == "SOFTWARE") { program = SOFTWARE; }
-        else if (programString == "SECURITY") { program = SECURITY; }
-        else { program = NETWORK; }
-
-        roster.add(id, first, last, email, age, class1, class2, class3, program);
-    }
 }
