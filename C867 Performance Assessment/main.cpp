@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sstream>
+#include <string>
 #include "student.h"
+#include "roster.h"
 using namespace std;
 
 // Took inspiration for this from https://stackoverflow.com/a/46931770
@@ -28,6 +30,36 @@ string studentData[] = {
 
 int main()
 {   
-    Student me = Student("A5", "Andrew", "Cartwright", "aca1820@wgu.edu", 32, 31, 35, 29, DegreeProgram::SOFTWARE);
-    me.Print();
+    Roster roster;
+
+    for (int i = 0; i < 5; i++) {
+        string tokens[9];
+        separateCSV(studentData[i], tokens);
+        string id = tokens[0];
+        string first = tokens[1];
+        string last = tokens[2];
+        string email = tokens[3];
+        int age = stoi(tokens[4]);
+        int days1 = stoi(tokens[5]);
+        int days2 = stoi(tokens[6]);
+        int days3 = stoi(tokens[7]);
+        string programString = tokens[8];
+
+        DegreeProgram program;
+
+        if (programString == "NETWORK") {
+            program = DegreeProgram::NETWORK;
+        }
+        else if (programString == "SECURITY") {
+            program = DegreeProgram::SECURITY;
+        }
+        else {
+            program = DegreeProgram::SOFTWARE;
+        }
+            
+
+        roster.add(id, first, last, email, age, days1, days2, days3, program);
+    }
+
+    //roster.printAll();
 }

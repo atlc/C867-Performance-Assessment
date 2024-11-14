@@ -1,5 +1,5 @@
-#ifndef STUDENT
-#define STUDENT
+#ifndef STUDENT_H
+#define STUDENT_H
 
 #include "degree.h"
 #include <iostream>
