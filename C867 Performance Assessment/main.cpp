@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include "student.h"
 using namespace std;
 
 // Took inspiration for this from https://stackoverflow.com/a/46931770
@@ -27,5 +28,6 @@ string studentData[] = {
 
 int main()
 {   
-
+    Student me = Student("A5", "Andrew", "Cartwright", "aca1820@wgu.edu", 32, 31, 35, 29, DegreeProgram::SOFTWARE);
+    me.Print();
 }
