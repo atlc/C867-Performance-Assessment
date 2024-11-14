@@ -30,7 +30,10 @@ string studentData[] = {
 
 int main()
 {   
-    Roster roster;
+    cout << "Scripting and Programming - Applications (C867; C++)" << endl;
+    cout << "Author info: Andrew Cartwright, Student ID 011487885\n" << endl;
+
+    Roster classRoster;
 
     for (int i = 0; i < 5; i++) {
         string tokens[9];
@@ -58,16 +61,21 @@ int main()
         }
             
 
-        roster.add(id, first, last, email, age, days1, days2, days3, program);
+        classRoster.add(id, first, last, email, age, days1, days2, days3, program);
     }
 
-   /* roster.remove("A5");
-    roster.remove("A1");
-    roster.remove("A1");
-    roster.remove("A6");*/
+    classRoster.printAll();
+    classRoster.printInvalidEmails();
 
-    /*roster.printAverageDaysInCourse("A4");
-    roster.printAverageDaysInCourse("A5");*/
-    //roster.printInvalidEmails();
-    roster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+    int studentCount = classRoster.numStudents;
+
+    for (int i = 0; i < studentCount; i++) {
+        Student* s = classRoster.classRosterArray[i];
+        classRoster.printAverageDaysInCourse(s->GetStudentID());
+    }
+
+    classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+    classRoster.remove("A3");
+    classRoster.printAll();
+    classRoster.remove("A3");
 }

@@ -14,6 +14,16 @@ Roster::Roster() {
 	}
 }
 
+Roster::~Roster() {
+	for (int i = 0; i < ROSTER_MAX; i++) {
+		Student* s = classRosterArray[i];
+
+		if (s != nullptr) {
+			remove(s->GetStudentID());
+		}
+	}
+}
+
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 	if (numStudents >= ROSTER_MAX) {
 		cout << "Class is full - already added 5 students to the roster" << endl;
@@ -52,19 +62,19 @@ void Roster::remove(string studentID) {
 				classRosterArray[i+1] = nullptr;
 			}
 		}
-
-		cout << "Successfully located and removed student " + studentID  << endl;
 	}
-
-	//Roster::printAll();
 }
 
 void Roster::printAll() {
+	cout << "\nCurrent Roster:" << endl;
+
 	for (int i = 0; i < ROSTER_MAX; i++) {
 		if (classRosterArray[i] != nullptr) {
 			classRosterArray[i]->Print();
 		}
 	}
+
+	cout << "\n" << endl;
 }
 
 void Roster::printAverageDaysInCourse(string studentID) {
@@ -80,6 +90,8 @@ void Roster::printAverageDaysInCourse(string studentID) {
 }
 
 void Roster::printInvalidEmails() {
+	cout << "\nInvalid email search results:" << endl;
+
 	for (int i = 0; i < numStudents; i++) {
 		Student* s = classRosterArray[i];
 		if (s != nullptr) {
@@ -96,13 +108,16 @@ void Roster::printInvalidEmails() {
 			}
 		}
 	}
+	cout << "\n" << endl;
 }
 
 void Roster::printByDegreeProgram(DegreeProgram prog) {
+	cout << "\nDegree program search results:" << endl;
 	for (int i = 0; i < numStudents; i++) {
 		Student* s = classRosterArray[i];
 		if (s != nullptr && s->GetDegreeProgram() == prog) {
 			s->Print();
 		}
 	}
+	cout << "\n" << endl;
 }
