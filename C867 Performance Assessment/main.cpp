@@ -66,6 +66,8 @@ int main()
     roster.remove("A1");
     roster.remove("A6");*/
 
-    roster.printAverageDaysInCourse("A4");
-    roster.printAverageDaysInCourse("A5");
+    /*roster.printAverageDaysInCourse("A4");
+    roster.printAverageDaysInCourse("A5");*/
+    //roster.printInvalidEmails();
+    roster.printByDegreeProgram(DegreeProgram::SOFTWARE);
 }

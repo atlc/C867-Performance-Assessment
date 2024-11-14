@@ -78,3 +78,31 @@ void Roster::printAverageDaysInCourse(string studentID) {
 		}
 	}
 }
+
+void Roster::printInvalidEmails() {
+	for (int i = 0; i < numStudents; i++) {
+		Student* s = classRosterArray[i];
+		if (s != nullptr) {
+			string email = s->GetEmail();
+
+			bool hasAtSign = email.find('@') != string::npos;
+			bool hasPeriod = email.find('.') != string::npos;
+			bool hasNoSpace = email.find(' ') == string::npos;
+
+			bool isValidEmail = hasAtSign && hasPeriod && hasNoSpace;
+
+			if (!isValidEmail) {
+				cout << "Error: Student " + s->GetStudentID() + " has an invalid email format (email: " + email + ")" << endl;
+			}
+		}
+	}
+}
+
+void Roster::printByDegreeProgram(DegreeProgram prog) {
+	for (int i = 0; i < numStudents; i++) {
+		Student* s = classRosterArray[i];
+		if (s != nullptr && s->GetDegreeProgram() == prog) {
+			s->Print();
+		}
+	}
+}
