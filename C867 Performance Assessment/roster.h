@@ -21,7 +21,6 @@ public:
 private:
 	Student* classRosterArray[5];
 	int numStudents;
-	void initializeArray();
 };
 
 #endif

@@ -61,5 +61,11 @@ int main()
         roster.add(id, first, last, email, age, days1, days2, days3, program);
     }
 
-    roster.printAll();
+   /* roster.remove("A5");
+    roster.remove("A1");
+    roster.remove("A1");
+    roster.remove("A6");*/
+
+    roster.printAverageDaysInCourse("A4");
+    roster.printAverageDaysInCourse("A5");
 }

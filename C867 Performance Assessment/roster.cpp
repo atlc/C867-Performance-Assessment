@@ -1,16 +1,14 @@
 #include "roster.h"
 #include "student.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 int ROSTER_MAX = 5;
 
 Roster::Roster() {
 	numStudents = 0;
-	initializeArray();
-}
 
-void Roster::initializeArray() {
 	for (int i = 0; i < ROSTER_MAX; i++) {
 		classRosterArray[i] = nullptr;
 	}
@@ -26,8 +24,57 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 	}
 }
 
+void Roster::remove(string studentID) {
+	bool studentFound = false;
+	int studentIndex;
+
+	for (int i = 0; i < numStudents; i++) {
+		Student* s = classRosterArray[i];
+		if (s!= nullptr && s->GetStudentID() == studentID) {
+			studentFound = true;
+			delete classRosterArray[i];
+			classRosterArray[i] = nullptr;
+			studentIndex = i;
+			numStudents--;
+			break;
+		}
+	}
+
+	if (!studentFound) {
+		cout << "Could not remove - student not found with the id of " + studentID << endl;
+	}
+	else {
+		for (int i = studentIndex; i < numStudents; i++) {
+			Student* s = classRosterArray[i];
+
+			if (s == nullptr && i != numStudents-1) {
+				classRosterArray[i] = classRosterArray[i+1];
+				classRosterArray[i+1] = nullptr;
+			}
+		}
+
+		cout << "Successfully located and removed student " + studentID  << endl;
+	}
+
+	//Roster::printAll();
+}
+
 void Roster::printAll() {
 	for (int i = 0; i < ROSTER_MAX; i++) {
-		classRosterArray[i]->Print();
+		if (classRosterArray[i] != nullptr) {
+			classRosterArray[i]->Print();
+		}
+	}
+}
+
+void Roster::printAverageDaysInCourse(string studentID) {
+	for (int i = 0; i < numStudents; i++) {
+		Student* s = classRosterArray[i];
+		if (s != nullptr && s->GetStudentID() == studentID) {
+			int* days = s->GetDaysForCourses();
+			int average = (days[0] + days[1] + days[2]) / 3;
+
+			cout << "The average amount of days per course for student " + studentID + " is " + to_string(average) << endl;
+		}
 	}
 }
