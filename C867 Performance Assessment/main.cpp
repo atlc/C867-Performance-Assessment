@@ -61,5 +61,5 @@ int main()
         roster.add(id, first, last, email, age, days1, days2, days3, program);
     }
 
-    //roster.printAll();
+    roster.printAll();
 }
